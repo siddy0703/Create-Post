@@ -36,6 +36,7 @@ export const deletePostSuccess = createAction(
 );
 
 export const loadPosts = createAction(LOAD_POSTS);
+
 export const loadPostsSuccess = createAction(
   LOAD_POSTS_SUCCESS,
   props<{ posts: Post[] }>()

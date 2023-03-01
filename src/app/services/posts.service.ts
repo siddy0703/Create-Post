@@ -11,7 +11,7 @@ export class PostsService {
 
   getPosts(): Observable<Post[]> {
     return this.http
-      .get<Post[]>(`https://vue-completecourse.firebaseio.com/posts.json`)
+      .get<Post[]>(`https://jsonplaceholder.typicode.com/posts`)
       .pipe(
         map((data) => {
           const posts: Post[] = [];
@@ -25,30 +25,14 @@ export class PostsService {
 
   addPost(post: Post): Observable<{ name: string }> {
     return this.http.post<{ name: string }>(
-      `https://vue-completecourse.firebaseio.com/posts.json`,
+      `https://jsonplaceholder.typicode.com/posts`,
       post
-    );
-  }
-
-  updatePost(post: Post) {
-    const postData = {
-      [post.id]: { title: post.title, description: post.description },
-    };
-    return this.http.patch(
-      `https://vue-completecourse.firebaseio.com/posts.json`,
-      postData
     );
   }
 
   deletePost(id: string) {
     return this.http.delete(
-      `https://vue-completecourse.firebaseio.com/posts/${id}.json`
-    );
-  }
-
-  getPostById(id: string): Observable<Post> {
-    return this.http.get<Post>(
-      `https://vue-completecourse.firebaseio.com/posts/${id}.json`
+      `https://jsonplaceholder.typicode.com/posts/${id}`
     );
   }
 }

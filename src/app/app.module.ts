@@ -1,7 +1,5 @@
 import { CustomSerializer } from './store/router/custom-serializer';
-import { AuthTokenInterceptor } from './services/AuthToken.interceptor';
-import { AuthEffects } from './auth/state/auth.effects';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { appReducer } from './store/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -31,7 +29,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([]),
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,
@@ -40,9 +38,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
       serializer: CustomSerializer,
     }),
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true },
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

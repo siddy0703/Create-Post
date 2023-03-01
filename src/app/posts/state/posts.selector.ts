@@ -2,7 +2,6 @@ import { RouterStateUrl } from './../../store/router/custom-serializer';
 import { getCurrentRoute } from './../../store/router/router.selector';
 import { postsAdapter, PostsState } from './posts.state';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { RouterState } from '@angular/router';
 
 export const POST_STATE_NAME = 'posts';
 const getPostsState = createFeatureSelector<PostsState>(POST_STATE_NAME);
